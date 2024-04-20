@@ -28,7 +28,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Yug
+ * @author Foram
  */
 @Entity
 @Table(name = "usertb")
