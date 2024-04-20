@@ -9,6 +9,8 @@ Entitypkg\Designationtb.class
 ServletPackage\designationServlet.class
 EJBPackage\ProjectEJB.class
 Entitypkg\Performanceevaltb.class
+ServletPackage\HRServlet.class
+EJBPackage\HREJB.class
 Entitypkg\Employeefeedback.class
 com\mycompany\staffflow\JakartaRestConfiguration.class
 Entitypkg\Salarytb.class
