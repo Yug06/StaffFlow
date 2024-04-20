@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Yug
+ * @author Foram
  */
 @Entity
 @Table(name = "salarytb")

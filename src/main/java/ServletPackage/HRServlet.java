@@ -4,15 +4,14 @@
  */
 package ServletPackage;
 
-import EJBPackage.SuperAdminEJB;
+import EJBPackage.HREJB;
 import Entitypkg.Designationtb;
-import Entitypkg.Usertb;
+import Entitypkg.Salarytb;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -25,10 +24,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Yug
  */
-@WebServlet(name = "designationServlet", urlPatterns = {"/designationServlet"})
-public class designationServlet extends HttpServlet {
+@WebServlet(name = "HRServlet", urlPatterns = {"/HRServlet"})
+public class HRServlet extends HttpServlet {
 @EJB
-SuperAdminEJB de;
+HREJB he;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,29 +45,24 @@ SuperAdminEJB de;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet designationServlet</title>");            
+            out.println("<title>Servlet HRServlet</title>");            
             out.println("</head>");
             out.println("<body>");
+            out.println("<h1>Servlet HRServlet at " + request.getContextPath() + "</h1>");
             
-            out.println("<h1>Servlet designationServlet at " + request.getContextPath() + "</h1>");
+            Collection<Designationtb> cd = he.getDesignationsforHR();
             
-            Collection<Designationtb> cde = de.displayDesignation();
-            
-            for(Designationtb d: cde){
+            for(Designationtb d: cd){
                 out.println(d.getDesignationID() + " " + d.getType());
             }
             
-             Collection<Usertb> ut = de.displayHR();
+             Collection<Salarytb> sd = he.displaySalary();
             
-            for(Usertb u: ut){
-                out.println(u.getName() + " " + u.getEmail() + " " + u.getPassword()+ " " + u.getContactNo() + " " + u.getJoinDate() + " " + u.getAddress()+ " " + u.getDob() + " " + u.getDesignationID().getType());
+            for(Salarytb d: sd){
+                out.println(d.getSalaryID() + " " + d.getUserID().getName() + " " + d.getAmount());
             }
             
-            out.println("--------------------------------");
-            
-            
-//            
-//             String dateString = "22-04-2021";
+//                         String dateString = "22-04-2021";
 //             String dobString = "10-03-2002";
 //            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 //            try{
@@ -77,12 +71,11 @@ SuperAdminEJB de;
 //
 //                System.out.println("Converted Date: " + date);
 //            
-//            de.addHR("Vivek", "vivek@gmail.com", "vivek123", 652314789, date, "Vesu", dobdate);
+//            he.addUser("Amit", "amit@gmail.com", "amit123", 642314789, date, "Adajan", dobdate,3);
 //            }catch (ParseException e) {
 //               e.printStackTrace();
 //        }
-            
-           
+//            
             
             out.println("</body>");
             out.println("</html>");

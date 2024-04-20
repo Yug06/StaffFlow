@@ -6,6 +6,7 @@ package Entitypkg;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Yug
+ * @author Foram
  */
 @Entity
 @Table(name = "designationtb")
@@ -74,10 +75,12 @@ public class Designationtb implements Serializable {
         this.type = type;
     }
 
+    @JsonbTransient
     public Collection<Usertb> getUsertbCollection() {
         return usertbCollection;
     }
 
+    @JsonbTransient
     public void setUsertbCollection(Collection<Usertb> usertbCollection) {
         this.usertbCollection = usertbCollection;
     }
